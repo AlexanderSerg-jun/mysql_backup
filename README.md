@@ -236,19 +236,21 @@ SHOW SLAVE STATUS\G
 
 ```bash
 USE bet;
-INSERT INTO bookmaker (id,bookmaker_name) VALUES(1,'1xbet');
+INSERT INTO bookmaker (id,bookmaker_name) VALUES(1,'noname');
 SELECT * FROM bookmaker;
 
 +----+----------------+
 | id | bookmaker_name |
 +----+----------------+
-|  1 | 1xbet          |
+|  1 | noname          |
 |  4 | betway         |
 |  5 | bwin           |
 |  6 | ladbrokes      |
 |  3 | unibet         |
 +----+----------------+
 5 rows in set (0.00 sec)
+INSERT INTO bookmaker (id,bookmaker_name) VALUES(2,'noname2');
+
 ```
 
 - На слейве
@@ -259,13 +261,28 @@ SELECT * FROM bookmaker;
 +----+----------------+
 | id | bookmaker_name |
 +----+----------------+
-|  1 | 1xbet          |
+|  1 | noname         |
 |  4 | betway         |
 |  5 | bwin           |
 |  6 | ladbrokes      |
 |  3 | unibet         |
 +----+----------------+
 5 rows in set (0.00 sec)
+
+SELECT * FROM bookmaker;
+
++----+----------------+
+| id | bookmaker_name |
++----+----------------+
+|  1 | noname         |
+|  4 | betway         |
+|  5 | bwin           |
+|  6 | ladbrokes      |
+|  3 | unibet         |
+|  2 | noname2        |
++----+----------------+
+
+
 ```
 
 - В binlog-ах на cлейве также видно последнее изменение, туда же он пишет информацию о GTID
